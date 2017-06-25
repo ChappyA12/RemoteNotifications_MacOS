@@ -16,7 +16,6 @@
     "tag": "2.5.3"
   },
   "frameworks": [
-    "UIKit",
     "Foundation",
     "SystemConfiguration"
   ],

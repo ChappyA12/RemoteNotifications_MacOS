@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "PushNotificationManager.h"
-#import "payloadModel.h"
+#import "PayloadModel.h"
 
 @interface ViewController : NSViewController
 
