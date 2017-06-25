@@ -1,0 +1,1 @@
+../../../../LocalPods/AWS-SDK-MacOS-port/AWSCore/CognitoIdentity/AWSCognitoIdentity+Fabric.h

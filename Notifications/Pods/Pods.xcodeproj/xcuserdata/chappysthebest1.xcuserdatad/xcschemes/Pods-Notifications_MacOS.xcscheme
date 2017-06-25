@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '84297A4C8EB4569AC3BEDAB528A22611'
+               BlueprintIdentifier = '1F88568230819EFEA4975BD8B9E793C0'
                BlueprintName = 'Pods-Notifications_MacOS'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-Notifications_MacOS.a'>

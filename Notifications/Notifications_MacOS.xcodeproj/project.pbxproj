@@ -22,6 +22,7 @@
 		09F13BF243D770CBD909ED4A /* Pods-Notifications_MacOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notifications_MacOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Notifications_MacOS/Pods-Notifications_MacOS.release.xcconfig"; sourceTree = "<group>"; };
 		A87244146D64AEBEB61A04BE /* libPods-Notifications_MacOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Notifications_MacOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECD67D16C55CB1162B8A51C9 /* Pods-Notifications_MacOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notifications_MacOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Notifications_MacOS/Pods-Notifications_MacOS.debug.xcconfig"; sourceTree = "<group>"; };
+		F906CE781F00413300AE7FC9 /* AWS-SDK-MacOS-port */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "AWS-SDK-MacOS-port"; path = "LocalPods/AWS-SDK-MacOS-port"; sourceTree = "<group>"; };
 		F9B1D96C1EFF762800F1C608 /* NotificationKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationKeys.h; sourceTree = "<group>"; };
 		F9B1D96D1EFF799200F1C608 /* Notifications.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Notifications.p12; sourceTree = "<group>"; };
 		F9B1D96F1EFF7A9E00F1C608 /* PushNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushNotificationManager.h; sourceTree = "<group>"; };
@@ -86,6 +87,7 @@
 				F9C454401EFF689C006BD1B6 /* Products */,
 				2B70D60EF187FC01164A5D3D /* Pods */,
 				2FBC968201F2DFBD2A419C0D /* Frameworks */,
+				F906CE781F00413300AE7FC9 /* AWS-SDK-MacOS-port */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,11 +107,7 @@
 				F9C454431EFF689C006BD1B6 /* AppDelegate.m */,
 				F9C454481EFF689C006BD1B6 /* ViewController.h */,
 				F9C454491EFF689C006BD1B6 /* ViewController.m */,
-				F9C4544B1EFF689C006BD1B6 /* Assets.xcassets */,
 				F9C4544D1EFF689C006BD1B6 /* Main.storyboard */,
-				F9C454501EFF689C006BD1B6 /* Info.plist */,
-				F9B1D96C1EFF762800F1C608 /* NotificationKeys.h */,
-				F9B1D96D1EFF799200F1C608 /* Notifications.p12 */,
 				F9C454451EFF689C006BD1B6 /* Supporting Files */,
 			);
 			path = Notifications_MacOS;
@@ -118,7 +116,11 @@
 		F9C454451EFF689C006BD1B6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F9C454501EFF689C006BD1B6 /* Info.plist */,
+				F9B1D96C1EFF762800F1C608 /* NotificationKeys.h */,
+				F9B1D96D1EFF799200F1C608 /* Notifications.p12 */,
 				F9C454461EFF689C006BD1B6 /* main.m */,
+				F9C4544B1EFF689C006BD1B6 /* Assets.xcassets */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

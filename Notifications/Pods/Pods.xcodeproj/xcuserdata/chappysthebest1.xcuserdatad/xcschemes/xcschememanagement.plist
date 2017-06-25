@@ -4,6 +4,26 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AWSCognito.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>AWSCore.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>AWSDynamoDB.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>AWSS3.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>NWPusher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,7 +37,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>84297A4C8EB4569AC3BEDAB528A22611</key>
+		<key>1F88568230819EFEA4975BD8B9E793C0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2755AE42901315D17AD036F6B85DA681</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2DC549F9D200E645025017E1C1C9C966</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CC6BD2A13E150E59C64E74A71DF0D1D6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E29B8868BA38043AE72DA3FBC7AD033D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

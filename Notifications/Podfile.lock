@@ -1,12 +1,37 @@
 PODS:
+  - AWSCognito (2.5.3):
+    - AWSCore (= 2.5.3)
+  - AWSCore (2.5.3)
+  - AWSDynamoDB (2.5.3):
+    - AWSCore (= 2.5.3)
+  - AWSS3 (2.5.3):
+    - AWSCore (= 2.5.3)
   - NWPusher (0.7.5)
 
 DEPENDENCIES:
+  - AWSCognito (from `LocalPods/AWS-SDK-MacOS-port`)
+  - AWSCore (from `LocalPods/AWS-SDK-MacOS-port`)
+  - AWSDynamoDB (from `LocalPods/AWS-SDK-MacOS-port`)
+  - AWSS3 (from `LocalPods/AWS-SDK-MacOS-port`)
   - NWPusher (~> 0.7.0)
 
+EXTERNAL SOURCES:
+  AWSCognito:
+    :path: LocalPods/AWS-SDK-MacOS-port
+  AWSCore:
+    :path: LocalPods/AWS-SDK-MacOS-port
+  AWSDynamoDB:
+    :path: LocalPods/AWS-SDK-MacOS-port
+  AWSS3:
+    :path: LocalPods/AWS-SDK-MacOS-port
+
 SPEC CHECKSUMS:
+  AWSCognito: e23757393663cb5d53c4cc35a68da7bc7f6475c1
+  AWSCore: ff7d5ec80fe9b9b5a03d21be6f7a4df65021ee35
+  AWSDynamoDB: 2182022d19b874104e72332e2d130584bfc5be48
+  AWSS3: a12928cd98ef55f985ae0d0a7ca1eab1843d1695
   NWPusher: 9b29a44754d88cb02c28a1e9bc8750845506123e
 
-PODFILE CHECKSUM: c5d7e36a6cfdef4234d630055f039c610b6bcef7
+PODFILE CHECKSUM: 8e07ee5dbb4df6c45573bb064be47b6e03be6a24
 
 COCOAPODS: 1.2.1

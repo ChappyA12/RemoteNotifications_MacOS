@@ -5,7 +5,10 @@ platform :osx, '10.11'
 
 target 'Notifications_MacOS' do
 
-pod 'NWPusher', '~> 0.7.0'
+  pod 'NWPusher', '~> 0.7.0'
+  pod 'AWSCore', :path => "LocalPods/AWS-SDK-MacOS-port"
+  pod 'AWSCognito', :path => "LocalPods/AWS-SDK-MacOS-port"
+  pod 'AWSDynamoDB', :path => "LocalPods/AWS-SDK-MacOS-port"
+  pod 'AWSS3', :path => "LocalPods/AWS-SDK-MacOS-port"
 
 end
-

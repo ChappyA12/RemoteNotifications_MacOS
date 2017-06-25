@@ -1,0 +1,1 @@
+../../../../LocalPods/AWS-SDK-MacOS-port/AWSCore/Fabric/FABAttributes.h

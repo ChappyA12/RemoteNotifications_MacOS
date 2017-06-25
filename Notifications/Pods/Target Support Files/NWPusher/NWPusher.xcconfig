@@ -1,6 +1,6 @@
 CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR/NWPusher
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/NWPusher" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/NWPusher"
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/NWPusher" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AWSCognito" "${PODS_ROOT}/Headers/Public/AWSCore" "${PODS_ROOT}/Headers/Public/AWSDynamoDB" "${PODS_ROOT}/Headers/Public/AWSS3" "${PODS_ROOT}/Headers/Public/NWPusher"
 OTHER_LDFLAGS = -framework "Security"
 PODS_BUILD_DIR = $BUILD_DIR
 PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)

@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import <AWSDynamoDB/AWSDynamoDB.h>
 
 @implementation ViewController
 
@@ -17,6 +18,7 @@
     payload.title = @"Title";
     payload.body = @"Body";
     [self.notificaitonManager pushNotificationWithPayload:[payload toString]];
+    AWSDynamoDBObjectMapper *dynamoDBObjectMapper = [AWSDynamoDBObjectMapper defaultDynamoDBObjectMapper];
 }
 
 - (void)setRepresentedObject: (id)representedObject {
