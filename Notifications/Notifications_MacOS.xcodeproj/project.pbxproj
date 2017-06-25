@@ -16,6 +16,7 @@
 		F9C4544A1EFF689C006BD1B6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C454491EFF689C006BD1B6 /* ViewController.m */; };
 		F9C4544C1EFF689C006BD1B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9C4544B1EFF689C006BD1B6 /* Assets.xcassets */; };
 		F9C4544F1EFF689C006BD1B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9C4544D1EFF689C006BD1B6 /* Main.storyboard */; };
+		F9F286201F00452600B85ACF /* RemoteNotificationsUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F2861F1F00452600B85ACF /* RemoteNotificationsUser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,8 @@
 		F9C4544B1EFF689C006BD1B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F9C4544E1EFF689C006BD1B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F9C454501EFF689C006BD1B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9F2861E1F00452600B85ACF /* RemoteNotificationsUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteNotificationsUser.h; sourceTree = "<group>"; };
+		F9F2861F1F00452600B85ACF /* RemoteNotificationsUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteNotificationsUser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +79,8 @@
 				F9B1D9731EFF7D9E00F1C608 /* PayloadModel.m */,
 				F9B1D96F1EFF7A9E00F1C608 /* PushNotificationManager.h */,
 				F9B1D9701EFF7A9E00F1C608 /* PushNotificationManager.m */,
+				F9F2861E1F00452600B85ACF /* RemoteNotificationsUser.h */,
+				F9F2861F1F00452600B85ACF /* RemoteNotificationsUser.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -249,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9C4544A1EFF689C006BD1B6 /* ViewController.m in Sources */,
+				F9F286201F00452600B85ACF /* RemoteNotificationsUser.m in Sources */,
 				F9B1D9741EFF7D9E00F1C608 /* PayloadModel.m in Sources */,
 				F9C454471EFF689C006BD1B6 /* main.m in Sources */,
 				F9B1D9711EFF7A9E00F1C608 /* PushNotificationManager.m in Sources */,

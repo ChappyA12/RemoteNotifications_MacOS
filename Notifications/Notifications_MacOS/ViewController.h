@@ -9,10 +9,13 @@
 #import <Cocoa/Cocoa.h>
 #import "PushNotificationManager.h"
 #import "PayloadModel.h"
+#import "RemoteNotificationsUser.h"
 
 @interface ViewController : NSViewController
 
-@property PushNotificationManager *notificaitonManager;
+@property (nonatomic) PushNotificationManager *notificaitonManager;
+
+@property (nonatomic) __block NSMutableArray <RemoteNotificationsUser *> *users;
 
 @end
 

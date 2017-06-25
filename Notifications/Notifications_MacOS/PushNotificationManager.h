@@ -16,6 +16,6 @@
 
 - (BOOL)connect;
 
-- (BOOL)pushNotificationWithPayload: (NSString *)payload;
+- (BOOL)pushNotificationWithToken: (NSString *) token Payload: (NSString *)payload;
 
 @end

@@ -33,9 +33,9 @@
     }
 }
 
-- (BOOL)pushNotificationWithPayload: (NSString *)payload {
+- (BOOL)pushNotificationWithToken: (NSString *) token Payload: (NSString *)payload {
     NSError *error;
-    BOOL pushed = [self.pusher pushPayload:payload token:PUSH_TOKEN identifier:rand() error:&error];
+    BOOL pushed = [self.pusher pushPayload:payload token:token identifier:rand() error:&error];
     if (pushed) {
         return YES;
     } else {
