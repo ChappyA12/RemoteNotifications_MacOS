@@ -7,15 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NWPusher.h"
-#import "NotificationKeys.h"
 
 @interface PushNotificationManager : NSObject
 
 - (id)init;
 
-- (BOOL)connect;
+- (BOOL)connectToAPN;
 
 - (BOOL)pushNotificationWithToken: (NSString *) token Payload: (NSString *)payload;
+
+- (BOOL)connectToFeedbackService;
+
+- (NSArray *)retrieveInvalidatedTokens;
 
 @end

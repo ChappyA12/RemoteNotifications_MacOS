@@ -17,36 +17,51 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [AWSLogger defaultLogger].logLevel = AWSLogLevelWarn;
-    //COGNITO HANDLING
+    [self loadServiceConfiguration];
+    [self updateUserListWithCompletionBlock:^(BOOL success) {
+        [self sendNotifications];
+    }];
+}
+
+- (IBAction)testButtonPressed:(NSButton *)sender {
+    [self sendNotifications];
+}
+
+- (void)loadServiceConfiguration {
     AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc]
                                                           initWithRegionType:AWSRegionUSEast1
                                                           identityPoolId:AWS_POOL_ID];
     AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionUSEast1 credentialsProvider:credentialsProvider];
     [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
-    //ACCESS DATABASE
+}
+
+- (void)updateUserListWithCompletionBlock:(void (^)(BOOL success))completed {
     self.users = [[NSMutableArray alloc] init];
     AWSDynamoDBObjectMapper *dynamoDBObjectMapper = [AWSDynamoDBObjectMapper defaultDynamoDBObjectMapper];
     AWSDynamoDBScanExpression *scanExpression = [AWSDynamoDBScanExpression new];
     scanExpression.limit = @10;
     [[dynamoDBObjectMapper scan:[RemoteNotificationsUser class] expression:scanExpression] continueWithBlock:^id(AWSTask *task) {
-         if (task.error) NSLog(@"The request failed. Error: [%@]", task.error);
-         else {
-             AWSDynamoDBPaginatedOutput *paginatedOutput = task.result;
-             //for (RemoteNotificationsUser *user in paginatedOutput.items)
-             self.users = [[NSMutableArray alloc] initWithArray: paginatedOutput.items];
-             [self sendNotifications];
-         }
-         return nil;
-     }];
-    
+        if (task.error) {
+            NSLog(@"The request failed. Error: [%@]", task.error);
+            completed(NO);
+        }
+        else {
+            AWSDynamoDBPaginatedOutput *paginatedOutput = task.result;
+            //for (RemoteNotificationsUser *user in paginatedOutput.items)
+            self.users = [[NSMutableArray alloc] initWithArray: paginatedOutput.items];
+            completed(YES);
+        }
+        return nil;
+    }];
 }
 
 - (void)sendNotifications {
     self.notificaitonManager = [[PushNotificationManager alloc] init];
     PayloadModel *payload = [[PayloadModel alloc] init];
-    payload.title = @"Hi!";
     for (RemoteNotificationsUser *user in self.users) {
-        payload.body = [NSString stringWithFormat:@"You are: %@",user.pushToken];
+        NSLog(@"Sending %@",user.pushToken);
+        payload.title = [NSString stringWithFormat:@"Update for %@...", [user.pushToken substringToIndex:6]];
+        payload.body = [NSString stringWithFormat:@"You are following: %@",user.data[0]];
         [self.notificaitonManager pushNotificationWithToken:user.pushToken Payload:[payload toString]];
     }
 }

@@ -17,5 +17,7 @@
 
 @property (nonatomic) __block NSMutableArray <RemoteNotificationsUser *> *users;
 
+@property (weak) IBOutlet NSButton *testButton;
+
 @end
 
