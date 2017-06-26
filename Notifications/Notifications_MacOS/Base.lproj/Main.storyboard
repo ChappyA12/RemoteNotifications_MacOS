@@ -688,12 +688,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8WN-Mq-K5U">
-                                <rect key="frame" x="184" y="258" width="132" height="36"/>
+                                <rect key="frame" x="169" y="258" width="162" height="36"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="eh9-iu-XMs"/>
+                                    <constraint firstAttribute="width" constant="150" id="eh9-iu-XMs"/>
                                     <constraint firstAttribute="height" constant="25" id="qoE-m7-1Yi"/>
                                 </constraints>
-                                <buttonCell key="cell" type="push" title="Test Notification" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Pjr-ra-khz">
+                                <buttonCell key="cell" type="push" title="Send Test Notification" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Pjr-ra-khz">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -714,7 +714,7 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn editable="NO" width="120" minWidth="100" maxWidth="550" id="Ndx-t8-ZFX">
+                                                <tableColumn editable="NO" width="120" minWidth="100" maxWidth="200" id="Ndx-t8-ZFX">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Push Token">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>

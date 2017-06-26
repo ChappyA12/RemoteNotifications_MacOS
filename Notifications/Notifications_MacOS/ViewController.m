@@ -27,6 +27,12 @@
     self.tableView.dataSource = self;
     [AWSLogger defaultLogger].logLevel = AWSLogLevelWarn;
     [self loadServiceConfiguration];
+    self.notificaitonManager = [[PushNotificationManager alloc] init];
+    self.uploadManager = [[ImageUploadManager alloc] init];
+    NSImage *testImage = [[NSImage alloc] initWithData:[self.view dataWithPDFInsideRect:self.view.bounds]];
+    [self.uploadManager uploadImage:testImage withCompletionBlock:^(BOOL success, NSString *fileName) {
+        NSLog(@"%@",fileName);
+    }];
     [self update];
     self.updateTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(update) userInfo:nil repeats:YES];
 }
@@ -40,7 +46,8 @@
 }
 
 - (IBAction)testButtonPressed:(NSButton *)sender {
-    [self sendNotifications];
+    if (self.tableView.selectedRow == -1) [self sendNotificationToAllUsers];
+    else [self sendNotificationToUser:self.users[self.tableView.selectedRow]];
 }
 
 - (void)loadServiceConfiguration {
@@ -71,16 +78,16 @@
     }];
 }
 
-- (void)sendNotifications {
-    self.notificaitonManager = [[PushNotificationManager alloc] init];
+- (void)sendNotificationToAllUsers {
+    for (RNUser *user in self.users) [self sendNotificationToUser:user];
+}
+
+- (void)sendNotificationToUser: (RNUser *)user {
     PayloadModel *payload = [[PayloadModel alloc] init];
-    for (RNUser *user in self.users) {
-        NSLog(@"Sending %@",user.pushToken);
-        payload.title = [NSString stringWithFormat:@"Update for %@...", [user.pushToken substringToIndex:6]];
-        payload.body = [NSString stringWithFormat:@"Your Data: %@",[self formattedArray:user.data]];
-        payload.sound = @".";
-        [self.notificaitonManager pushNotificationWithToken:user.pushToken Payload:[payload toString]];
-    }
+    payload.title = [NSString stringWithFormat:@"Update for %@...", [user.pushToken substringToIndex:6]];
+    payload.body = [NSString stringWithFormat:@"Your Data: %@",[self formattedArray:user.data]];
+    payload.sound = @".";
+    [self.notificaitonManager pushNotificationWithToken:user.pushToken Payload:[payload toString]];
 }
 
 - (void)setRepresentedObject: (id)representedObject {
@@ -117,11 +124,11 @@
         if([self.tableView selectedRow] == -1) NSBeep();
         else {
             RNUser *delete = [RNUser new];
-            delete.pushToken = self.users[[self.tableView selectedRow]].pushToken;
+            delete.pushToken = self.users[self.tableView.selectedRow].pushToken;
             [[self.mapper remove:delete] continueWithBlock:^id(AWSTask *task) {
                  if (task.error) NSLog(@"The request failed. Error: [%@]", task.error);
                  else {
-                     [self.users removeObjectAtIndex:[self.tableView selectedRow]];
+                     [self.users removeObjectAtIndex:self.tableView.selectedRow];
                      dispatch_async(dispatch_get_main_queue(), ^{
                          [self.tableView reloadData];
                      });

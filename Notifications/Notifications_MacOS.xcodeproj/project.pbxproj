@@ -17,6 +17,7 @@
 		F9C4544C1EFF689C006BD1B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9C4544B1EFF689C006BD1B6 /* Assets.xcassets */; };
 		F9C4544F1EFF689C006BD1B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9C4544D1EFF689C006BD1B6 /* Main.storyboard */; };
 		F9F286201F00452600B85ACF /* RNUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F2861F1F00452600B85ACF /* RNUser.m */; };
+		F9F286261F00B35200B85ACF /* ImageUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F286251F00B35200B85ACF /* ImageUploadManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,8 @@
 		F9C454501EFF689C006BD1B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F9F2861E1F00452600B85ACF /* RNUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNUser.h; sourceTree = "<group>"; };
 		F9F2861F1F00452600B85ACF /* RNUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNUser.m; sourceTree = "<group>"; };
+		F9F286241F00B35200B85ACF /* ImageUploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUploadManager.h; sourceTree = "<group>"; };
+		F9F286251F00B35200B85ACF /* ImageUploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUploadManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +80,8 @@
 			children = (
 				F9B1D9721EFF7D9E00F1C608 /* PayloadModel.h */,
 				F9B1D9731EFF7D9E00F1C608 /* PayloadModel.m */,
+				F9F286241F00B35200B85ACF /* ImageUploadManager.h */,
+				F9F286251F00B35200B85ACF /* ImageUploadManager.m */,
 				F9B1D96F1EFF7A9E00F1C608 /* PushNotificationManager.h */,
 				F9B1D9701EFF7A9E00F1C608 /* PushNotificationManager.m */,
 				F9F2861E1F00452600B85ACF /* RNUser.h */,
@@ -258,6 +263,7 @@
 				F9B1D9741EFF7D9E00F1C608 /* PayloadModel.m in Sources */,
 				F9C454471EFF689C006BD1B6 /* main.m in Sources */,
 				F9B1D9711EFF7A9E00F1C608 /* PushNotificationManager.m in Sources */,
+				F9F286261F00B35200B85ACF /* ImageUploadManager.m in Sources */,
 				F9C454441EFF689C006BD1B6 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
