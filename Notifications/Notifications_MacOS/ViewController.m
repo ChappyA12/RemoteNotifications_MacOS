@@ -12,14 +12,29 @@
 #import <AWSDynamoDB/AWSDynamoDB.h>
 #import "NotificationKeys.h"
 
+@interface ViewController ()
+
+@property NSTimer *updateTimer;
+
+@end
+
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     [AWSLogger defaultLogger].logLevel = AWSLogLevelWarn;
     [self loadServiceConfiguration];
+    [self update];
+    self.updateTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(update) userInfo:nil repeats:YES];
+}
+
+- (void)update {
     [self updateUserListWithCompletionBlock:^(BOOL success) {
-        [self sendNotifications];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
     }];
 }
 
@@ -40,7 +55,7 @@
     AWSDynamoDBObjectMapper *dynamoDBObjectMapper = [AWSDynamoDBObjectMapper defaultDynamoDBObjectMapper];
     AWSDynamoDBScanExpression *scanExpression = [AWSDynamoDBScanExpression new];
     scanExpression.limit = @10;
-    [[dynamoDBObjectMapper scan:[RemoteNotificationsUser class] expression:scanExpression] continueWithBlock:^id(AWSTask *task) {
+    [[dynamoDBObjectMapper scan:[RNUser class] expression:scanExpression] continueWithBlock:^id(AWSTask *task) {
         if (task.error) {
             NSLog(@"The request failed. Error: [%@]", task.error);
             completed(NO);
@@ -58,10 +73,13 @@
 - (void)sendNotifications {
     self.notificaitonManager = [[PushNotificationManager alloc] init];
     PayloadModel *payload = [[PayloadModel alloc] init];
-    for (RemoteNotificationsUser *user in self.users) {
+    for (RNUser *user in self.users) {
         NSLog(@"Sending %@",user.pushToken);
         payload.title = [NSString stringWithFormat:@"Update for %@...", [user.pushToken substringToIndex:6]];
-        payload.body = [NSString stringWithFormat:@"You are following: %@",user.data[0]];
+        NSString *arrString = @"";
+        for (NSString *str in user.data) arrString = [NSString stringWithFormat:@"%@, %@",arrString,str];
+        payload.body = [NSString stringWithFormat:@"You are following: %@",arrString];
+        payload.sound = @".";
         [self.notificaitonManager pushNotificationWithToken:user.pushToken Payload:[payload toString]];
     }
 }
@@ -69,6 +87,30 @@
 - (void)setRepresentedObject: (id)representedObject {
     [super setRepresentedObject:representedObject];
     // Update the view, if already loaded.
+}
+
+#pragma mark - tableView dataSource
+
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
+    return self.users.count;
+}
+
+- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+    RNUser *user = self.users[row];
+    if ([tableColumn.title isEqualToString:@"Push Token"]) return user.pushToken;
+    else if ([tableColumn.title isEqualToString:@"Data"]) {
+        NSString *arrString = @"";
+        for (NSString *str in user.data) arrString = [NSString stringWithFormat:@"%@, %@",arrString,str];
+        return [NSString stringWithFormat:@"[ %@ ]",[arrString substringFromIndex:2]];
+    }
+    else                                                   return [NSNumber numberWithBool:user.update];
+}
+
+#pragma mark - tableView delegate
+
+- (void)tableViewSelectionDidChange:(NSNotification *)notification {
+    NSTableView *tableView = notification.object;
+    NSLog(@"User has selected row %ld", (long)tableView.selectedRow);
 }
 
 @end

@@ -9,15 +9,16 @@
 #import <Cocoa/Cocoa.h>
 #import "PushNotificationManager.h"
 #import "PayloadModel.h"
-#import "RemoteNotificationsUser.h"
+#import "RNUser.h"
 
-@interface ViewController : NSViewController
+@interface ViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource>
 
 @property (nonatomic) PushNotificationManager *notificaitonManager;
 
-@property (nonatomic) __block NSMutableArray <RemoteNotificationsUser *> *users;
+@property (nonatomic) __block NSMutableArray <RNUser *> *users;
 
 @property (weak) IBOutlet NSButton *testButton;
+@property (weak) IBOutlet NSTableView *tableView;
 
 @end
 

@@ -1,5 +1,5 @@
 //
-//  RemoteNotificationsUser.h
+//  RNUser.h
 //  Notifications
 //
 //  Created by Chappy Asel on 6/25/17.
@@ -8,7 +8,7 @@
 
 #import <AWSDynamoDB/AWSDynamoDB.h>
 
-@interface RemoteNotificationsUser : AWSDynamoDBObjectModel <AWSDynamoDBModeling>
+@interface RNUser : AWSDynamoDBObjectModel <AWSDynamoDBModeling>
 
 @property (nonatomic, strong) NSString *pushToken;
 @property                     BOOL update;
