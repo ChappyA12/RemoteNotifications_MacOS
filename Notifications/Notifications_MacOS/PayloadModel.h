@@ -16,6 +16,8 @@
 @property int badge;
 @property NSString *sound;
 
+@property NSString *S3Link;
+
 - (id)init;
 
 - (NSString *)toString;

@@ -24,7 +24,10 @@
     finalString = [NSString stringWithFormat:@"%@},",finalString];
     if (self.badge) finalString = [NSString stringWithFormat:@"%@\"badge\":\"%d\",",finalString, self.badge];
     if (self.sound) finalString = [NSString stringWithFormat:@"%@\"sound\":\"%@\",",finalString, self.sound];
-    return [NSString stringWithFormat:@"%@}}",finalString];
+    if (self.S3Link) finalString = [NSString stringWithFormat:@"%@\"mutable-content\": 1,\"category\":\"NotificationImage\",",finalString];
+    finalString = [NSString stringWithFormat:@"%@},",finalString];
+    if (self.S3Link) finalString = [NSString stringWithFormat:@"%@\"S3Link\":\"%@\",",finalString, self.S3Link];
+    return [NSString stringWithFormat:@"%@}",finalString];
 }
 
 @end

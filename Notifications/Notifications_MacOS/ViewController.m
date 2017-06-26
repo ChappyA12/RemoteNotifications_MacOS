@@ -29,10 +29,6 @@
     [self loadServiceConfiguration];
     self.notificaitonManager = [[PushNotificationManager alloc] init];
     self.uploadManager = [[ImageUploadManager alloc] init];
-    NSImage *testImage = [[NSImage alloc] initWithData:[self.view dataWithPDFInsideRect:self.view.bounds]];
-    [self.uploadManager uploadImage:testImage withCompletionBlock:^(BOOL success, NSString *fileName) {
-        NSLog(@"%@",fileName);
-    }];
     [self update];
     self.updateTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(update) userInfo:nil repeats:YES];
 }
@@ -83,11 +79,15 @@
 }
 
 - (void)sendNotificationToUser: (RNUser *)user {
-    PayloadModel *payload = [[PayloadModel alloc] init];
-    payload.title = [NSString stringWithFormat:@"Update for %@...", [user.pushToken substringToIndex:6]];
-    payload.body = [NSString stringWithFormat:@"Your Data: %@",[self formattedArray:user.data]];
-    payload.sound = @".";
-    [self.notificaitonManager pushNotificationWithToken:user.pushToken Payload:[payload toString]];
+    NSImage *testImage = [[NSImage alloc] initWithData:[self.view dataWithPDFInsideRect:self.view.bounds]];
+    [self.uploadManager uploadImage:testImage withCompletionBlock:^(BOOL success, NSString *fileName) {
+        PayloadModel *payload = [[PayloadModel alloc] init];
+        payload.title = [NSString stringWithFormat:@"Update for %@...", [user.pushToken substringToIndex:6]];
+        payload.body = [NSString stringWithFormat:@"Your Data: %@",[self formattedArray:user.data]];
+        payload.sound = @".";
+        payload.S3Link = fileName;
+        [self.notificaitonManager pushNotificationWithToken:user.pushToken Payload:[payload toString]];
+    }];
 }
 
 - (void)setRepresentedObject: (id)representedObject {
