@@ -14,6 +14,7 @@
 
 @interface ViewController ()
 
+@property AWSDynamoDBObjectMapper *mapper;
 @property NSTimer *updateTimer;
 
 @end
@@ -52,10 +53,10 @@
 
 - (void)updateUserListWithCompletionBlock:(void (^)(BOOL success))completed {
     self.users = [[NSMutableArray alloc] init];
-    AWSDynamoDBObjectMapper *dynamoDBObjectMapper = [AWSDynamoDBObjectMapper defaultDynamoDBObjectMapper];
+    self.mapper = [AWSDynamoDBObjectMapper defaultDynamoDBObjectMapper];
     AWSDynamoDBScanExpression *scanExpression = [AWSDynamoDBScanExpression new];
     scanExpression.limit = @10;
-    [[dynamoDBObjectMapper scan:[RNUser class] expression:scanExpression] continueWithBlock:^id(AWSTask *task) {
+    [[self.mapper scan:[RNUser class] expression:scanExpression] continueWithBlock:^id(AWSTask *task) {
         if (task.error) {
             NSLog(@"The request failed. Error: [%@]", task.error);
             completed(NO);
@@ -76,9 +77,7 @@
     for (RNUser *user in self.users) {
         NSLog(@"Sending %@",user.pushToken);
         payload.title = [NSString stringWithFormat:@"Update for %@...", [user.pushToken substringToIndex:6]];
-        NSString *arrString = @"";
-        for (NSString *str in user.data) arrString = [NSString stringWithFormat:@"%@, %@",arrString,str];
-        payload.body = [NSString stringWithFormat:@"You are following: %@",arrString];
+        payload.body = [NSString stringWithFormat:@"Your Data: %@",[self formattedArray:user.data]];
         payload.sound = @".";
         [self.notificaitonManager pushNotificationWithToken:user.pushToken Payload:[payload toString]];
     }
@@ -98,19 +97,41 @@
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     RNUser *user = self.users[row];
     if ([tableColumn.title isEqualToString:@"Push Token"]) return user.pushToken;
-    else if ([tableColumn.title isEqualToString:@"Data"]) {
-        NSString *arrString = @"";
-        for (NSString *str in user.data) arrString = [NSString stringWithFormat:@"%@, %@",arrString,str];
-        return [NSString stringWithFormat:@"[ %@ ]",[arrString substringFromIndex:2]];
-    }
+    else if ([tableColumn.title isEqualToString:@"Data"])  return [self formattedArray:user.data];
     else                                                   return [NSNumber numberWithBool:user.update];
+}
+
+- (NSString *)formattedArray: (NSArray *)array {
+    NSString *arrString = @"";
+    for (NSString *str in array) arrString = [NSString stringWithFormat:@"%@, %@",arrString,str];
+    return [NSString stringWithFormat:@"[ %@ ]",[arrString substringFromIndex:2]];
 }
 
 #pragma mark - tableView delegate
 
-- (void)tableViewSelectionDidChange:(NSNotification *)notification {
-    NSTableView *tableView = notification.object;
-    NSLog(@"User has selected row %ld", (long)tableView.selectedRow);
+#pragma mark - keyboard handling
+
+- (void)keyUp:(NSEvent *)event {
+    unichar key = [[event charactersIgnoringModifiers] characterAtIndex:0];
+    if(key == NSDeleteCharacter) {
+        if([self.tableView selectedRow] == -1) NSBeep();
+        else {
+            RNUser *delete = [RNUser new];
+            delete.pushToken = self.users[[self.tableView selectedRow]].pushToken;
+            [[self.mapper remove:delete] continueWithBlock:^id(AWSTask *task) {
+                 if (task.error) NSLog(@"The request failed. Error: [%@]", task.error);
+                 else {
+                     [self.users removeObjectAtIndex:[self.tableView selectedRow]];
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         [self.tableView reloadData];
+                     });
+                 }
+                 return nil;
+            }];
+            return;
+        }
+    }
+    [super keyDown:event];
 }
 
 @end
