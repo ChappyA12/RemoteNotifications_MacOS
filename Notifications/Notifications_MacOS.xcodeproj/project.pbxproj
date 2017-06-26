@@ -31,7 +31,7 @@
 		F9B1D9701EFF7A9E00F1C608 /* PushNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushNotificationManager.m; sourceTree = "<group>"; };
 		F9B1D9721EFF7D9E00F1C608 /* PayloadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayloadModel.h; sourceTree = "<group>"; };
 		F9B1D9731EFF7D9E00F1C608 /* PayloadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayloadModel.m; sourceTree = "<group>"; };
-		F9C4543F1EFF689C006BD1B6 /* Notifications_MacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notifications_MacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9C4543F1EFF689C006BD1B6 /* Remote Notifications.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Remote Notifications.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9C454421EFF689C006BD1B6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F9C454431EFF689C006BD1B6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F9C454461EFF689C006BD1B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 		F9C454401EFF689C006BD1B6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F9C4543F1EFF689C006BD1B6 /* Notifications_MacOS.app */,
+				F9C4543F1EFF689C006BD1B6 /* Remote Notifications.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -138,9 +138,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F9C4543E1EFF689C006BD1B6 /* Notifications_MacOS */ = {
+		F9C4543E1EFF689C006BD1B6 /* Remote Notifications */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F9C454531EFF689C006BD1B6 /* Build configuration list for PBXNativeTarget "Notifications_MacOS" */;
+			buildConfigurationList = F9C454531EFF689C006BD1B6 /* Build configuration list for PBXNativeTarget "Remote Notifications" */;
 			buildPhases = (
 				74E5819BD87273A5B508B8FA /* [CP] Check Pods Manifest.lock */,
 				F9C4543B1EFF689C006BD1B6 /* Sources */,
@@ -153,9 +153,9 @@
 			);
 			dependencies = (
 			);
-			name = Notifications_MacOS;
+			name = "Remote Notifications";
 			productName = Notifications_MacOS;
-			productReference = F9C4543F1EFF689C006BD1B6 /* Notifications_MacOS.app */;
+			productReference = F9C4543F1EFF689C006BD1B6 /* Remote Notifications.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -187,7 +187,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F9C4543E1EFF689C006BD1B6 /* Notifications_MacOS */,
+				F9C4543E1EFF689C006BD1B6 /* Remote Notifications */,
 			);
 		};
 /* End PBXProject section */
@@ -423,7 +423,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F9C454531EFF689C006BD1B6 /* Build configuration list for PBXNativeTarget "Notifications_MacOS" */ = {
+		F9C454531EFF689C006BD1B6 /* Build configuration list for PBXNativeTarget "Remote Notifications" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F9C454541EFF689C006BD1B6 /* Debug */,
