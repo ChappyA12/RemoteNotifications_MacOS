@@ -87,6 +87,7 @@
         payload.body = [NSString stringWithFormat:@"Your Data: %@",[self formattedArray:user.data]];
         payload.sound = @".";
         payload.S3Link = fileName;
+        payload.category = @"addRemove";
         [self.notificaitonManager pushNotificationWithToken:user.pushToken Payload:[payload toString]];
     }];
 }

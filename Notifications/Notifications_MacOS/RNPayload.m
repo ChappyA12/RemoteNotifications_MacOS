@@ -24,7 +24,8 @@
     finalString = [NSString stringWithFormat:@"%@},",finalString];
     if (self.badge) finalString = [NSString stringWithFormat:@"%@\"badge\":\"%d\",",finalString, self.badge];
     if (self.sound) finalString = [NSString stringWithFormat:@"%@\"sound\":\"%@\",",finalString, self.sound];
-    if (self.S3Link) finalString = [NSString stringWithFormat:@"%@\"mutable-content\": 1,\"category\":\"NotificationImage\",",finalString];
+    if (self.category) finalString = [NSString stringWithFormat:@"%@\"category\":\"%@\",",finalString, self.category];
+    if (self.S3Link) finalString = [NSString stringWithFormat:@"%@\"mutable-content\": 1,",finalString];
     finalString = [NSString stringWithFormat:@"%@},",finalString];
     if (self.S3Link) finalString = [NSString stringWithFormat:@"%@\"S3Link\":\"%@\",",finalString, self.S3Link];
     return [NSString stringWithFormat:@"%@}",finalString];
@@ -38,7 +39,10 @@
 //            "title" : "Update",
 //            "body" : "Bryce Harper is up to bat!",
 //        },
-//        "badge" : 1,
-//        "sound" : "."
-//    }
+//        "badge" : 1,,
+//        "sound" : ".",
+//        "category" : "addRemove",
+//        "mutable-content" : 1
+//    },
+//    "S3Link": "image.jpeg"
 //}
