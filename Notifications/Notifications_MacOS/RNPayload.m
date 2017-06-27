@@ -1,14 +1,14 @@
 //
-//  PayloadModel.m
+//  RNPayload.m
 //  Notifications_MacOS
 //
 //  Created by Chappy Asel on 6/25/17.
 //  Copyright © 2017 CD. All rights reserved.
 //
 
-#import "PayloadModel.h"
+#import "RNPayload.h"
 
-@implementation PayloadModel
+@implementation RNPayload
 
 - (id)init {
     if (self = [super init]) {

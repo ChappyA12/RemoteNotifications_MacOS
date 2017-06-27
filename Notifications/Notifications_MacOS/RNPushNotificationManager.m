@@ -1,22 +1,22 @@
 //
-//  PushNotificationManager.m
+//  RNPushNotificationManager.m
 //  Notifications_MacOS
 //
 //  Created by Chappy Asel on 6/25/17.
 //  Copyright © 2017 CD. All rights reserved.
 //
 
-#import "PushNotificationManager.h"
+#import "RNPushNotificationManager.h"
 #import "NotificationKeys.h"
 #import "NWPusher.h"
 #import "NWPushFeedback.h"
 
-@interface PushNotificationManager ()
+@interface RNPushNotificationManager ()
     @property NWPusher *pusher;
     @property NWPushFeedback *feedback;
 @end
 
-@implementation PushNotificationManager
+@implementation RNPushNotificationManager
 
 - (id) init {
     if (self = [super init]) {

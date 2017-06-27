@@ -1,5 +1,5 @@
 //
-//  PayloadModel.h
+//  RNPayload.h
 //  Notifications_MacOS
 //
 //  Created by Chappy Asel on 6/25/17.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PayloadModel : NSObject
+@interface RNPayload : NSObject
 
 @property NSString *title;
 @property NSString *body;

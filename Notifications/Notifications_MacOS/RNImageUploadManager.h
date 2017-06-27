@@ -1,5 +1,5 @@
 //
-//  ImageUploadManager.h
+//  RNImageUploadManager.h
 //  Notifications_MacOS
 //
 //  Created by Chappy Asel on 6/25/17.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ImageUploadManager : NSObject
+@interface RNImageUploadManager : NSObject
 
 - (id)init;
 

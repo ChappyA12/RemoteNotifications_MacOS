@@ -11,6 +11,7 @@
 #import <AWSCognito/AWSCognito.h>
 #import <AWSDynamoDB/AWSDynamoDB.h>
 #import "NotificationKeys.h"
+#import "RNView.h"
 
 @interface ViewController ()
 
@@ -27,8 +28,8 @@
     self.tableView.dataSource = self;
     [AWSLogger defaultLogger].logLevel = AWSLogLevelWarn;
     [self loadServiceConfiguration];
-    self.notificaitonManager = [[PushNotificationManager alloc] init];
-    self.uploadManager = [[ImageUploadManager alloc] init];
+    self.notificaitonManager = [[RNPushNotificationManager alloc] init];
+    self.uploadManager = [[RNImageUploadManager alloc] init];
     [self update];
     self.updateTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(update) userInfo:nil repeats:YES];
 }
@@ -79,9 +80,9 @@
 }
 
 - (void)sendNotificationToUser: (RNUser *)user {
-    NSImage *testImage = [[NSImage alloc] initWithData:[self.view dataWithPDFInsideRect:self.view.bounds]];
-    [self.uploadManager uploadImage:testImage withCompletionBlock:^(BOOL success, NSString *fileName) {
-        PayloadModel *payload = [[PayloadModel alloc] init];
+    NSImage *image = [[[RNView alloc] init] imageRepresentation];
+    [self.uploadManager uploadImage:image withCompletionBlock:^(BOOL success, NSString *fileName) {
+        RNPayload *payload = [[RNPayload alloc] init];
         payload.title = [NSString stringWithFormat:@"Update for %@...", [user.pushToken substringToIndex:6]];
         payload.body = [NSString stringWithFormat:@"Your Data: %@",[self formattedArray:user.data]];
         payload.sound = @".";

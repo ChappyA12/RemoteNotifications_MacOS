@@ -7,15 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "PushNotificationManager.h"
-#import "ImageUploadManager.h"
-#import "PayloadModel.h"
+#import "RNPushNotificationManager.h"
+#import "RNImageUploadManager.h"
+#import "RNPayload.h"
 #import "RNUser.h"
 
 @interface ViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource>
 
-@property (nonatomic) PushNotificationManager *notificaitonManager;
-@property (nonatomic) ImageUploadManager *uploadManager;
+@property (nonatomic) RNPushNotificationManager *notificaitonManager;
+@property (nonatomic) RNImageUploadManager *uploadManager;
 
 @property (nonatomic) __block NSMutableArray <RNUser *> *users;
 

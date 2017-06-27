@@ -1,22 +1,22 @@
 //
-//  ImageUploadManager.m
+//  RNImageUploadManager.m
 //  Notifications_MacOS
 //
 //  Created by Chappy Asel on 6/25/17.
 //  Copyright © 2017 CD. All rights reserved.
 //
 
-#import "ImageUploadManager.h"
+#import "RNImageUploadManager.h"
 #import <AWSS3/AWSS3.h>
 #import "NotificationKeys.h"
 
-@interface ImageUploadManager ()
+@interface RNImageUploadManager ()
 
 @property AWSS3TransferManager *manager;
 
 @end
 
-@implementation ImageUploadManager
+@implementation RNImageUploadManager
 
 - (id) init {
     if (self = [super init]) {

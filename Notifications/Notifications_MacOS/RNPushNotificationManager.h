@@ -1,5 +1,5 @@
 //
-//  PushNotificationManager.h
+//  RNPushNotificationManager.h
 //  Notifications_MacOS
 //
 //  Created by Chappy Asel on 6/25/17.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PushNotificationManager : NSObject
+@interface RNPushNotificationManager : NSObject
 
 - (id)init;
 
