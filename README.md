@@ -39,4 +39,4 @@ In order to get the MacOS app to fully function correctly, the file 'Notificatio
 * [NWPusher](https://github.com/noodlewerk/NWPusher) - used to interface with the APS system
 
 ## Images
-<img src="./Screenshots/image1.png" alt="Drawing" width="300 px"/>
+<img src="./Screenshots/image1.png" alt="Drawing" width="600 px"/>
