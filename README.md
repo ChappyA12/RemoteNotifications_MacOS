@@ -37,3 +37,6 @@ In order to get the MacOS app to fully function correctly, the file 'Notificatio
 [Cocoapods](https://cocoapods.org) is a dependency manager for Swift and ObjC projects. This app does not require additional setup to enable the pods to be used. the following pods are used:
 * [AWS iOS SDK](https://github.com/aws/aws-sdk-ios) - a custom iteration that is MacOS-friendly
 * [NWPusher](https://github.com/noodlewerk/NWPusher) - used to interface with the APS system
+
+## Images
+<img src="./Screenshots/image1.png" alt="Drawing" width="300 px"/>
